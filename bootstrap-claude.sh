@@ -60,6 +60,21 @@ mkdir -p governance/{policies,risk-register,model-cards}
 mkdir -p evidence/{prompts,outputs,decisions,logs}
 mkdir -p provenance/fhir
 mkdir -p audit
+mkdir -p ig  # Implementation Guide: FHIR IG artifacts and configuration
+
+########################################
+# 2a. .gitignore for ISO 42001 Folders
+########################################
+# Excludes sensitive AIMS folders from being synced to GitHub.
+# These directories may contain private policies, AI interaction logs,
+# audit records, and provenance data that should remain local.
+cat > .gitignore <<'EOF'
+# ISO/IEC 42001 AIMS — do not sync to GitHub
+governance/
+evidence/
+provenance/
+audit/
+EOF
 
 # Generates the initial AIMS documentation header.
 cat > governance/README.md <<EOF
